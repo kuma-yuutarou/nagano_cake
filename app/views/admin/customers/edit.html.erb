@@ -1,2 +1,29 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<h2><%= @customers.last_name %><%= @customers.first_name %>さんの会員情報編集</h2>
+
+<%= form_with model: @customers, url: admin_customer_path do |f| %>
+  <h4>会員ID</h4>
+  <%= @customers.id %>
+
+  <h4>氏名</h4>
+
+
+  <h4>フリガナ</h4>
+
+
+  <h4>郵便番号</h4>
+
+
+  <h4>住所</h4>
+
+
+  <h4>電話番号</h4>
+
+
+  <h4>メールアドレス</h4>
+
+
+  <h4>会員ステータス</h4>
+
+
+  <%= f.submit '変更を保存' %>
+<% end %>

@@ -3,21 +3,28 @@
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+      <th>注文ステータス</th>
     </tr>
   </thead>
-  
+
   <tbody>
-    
+    <% @orders.each do |order| %>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><% order.created_at %></td>
+      <td><% order.name %></td>
+      <td><% order.amount %></td>
+      <td>
+        <% if order.order_status %>
+
+        <% else %>
+
+        <% end %>
+      </td>
     </tr>
-    
+    <% end %>
   </tbody>
 </table>
+<%= paginate @orders %>

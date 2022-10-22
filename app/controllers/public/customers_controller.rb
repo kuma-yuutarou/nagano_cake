@@ -4,9 +4,19 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+    @customers = current_customer
   end
 
   def unsubscribe
+  end
+
+  def update
+    @customers = current_customer
+    if @customers.update(customer_params)
+      redirect_to public_customers_my_page_path
+    else
+      render :edit
+    end
   end
 
   private

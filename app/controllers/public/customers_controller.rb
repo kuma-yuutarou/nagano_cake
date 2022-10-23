@@ -10,6 +10,16 @@ class Public::CustomersController < ApplicationController
   def unsubscribe
   end
 
+  def withdrawal
+    @customers = current_customer
+    if @customers.update(is_active: false)
+      reset_session
+      redirect_to public_homes_top_path
+    else
+      render :unsubscribe
+    end
+  end
+
   def update
     @customers = current_customer
     if @customers.update(customer_params)

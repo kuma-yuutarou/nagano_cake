@@ -1,6 +1,6 @@
 <h2>配送先登録/一覧</h2>
 
-<%= form_with model: @addresse, url: public_customers_path do |f| %>
+<%= form_with model: @address, url: public_shipping_address_index_path do |f| %>
   <h4>郵便番号（ハイフンなし）</h4>
   <%= f.text_field :postal_code %>
 
@@ -12,4 +12,18 @@
 
 
   <%= f.submit '新規登録' %>
+<% end %>
+
+<% @addresses.each do |address| %>
+  <h4>郵便番号</h4>
+  <%= address.postal_code %>
+
+  <h4>住所</h4>
+  <%= address.address %>
+
+  <h4>宛名</h4>
+  <%= address.name %>
+
+  <%= link_to "編集する", edit_public_shipping_address_path(address.id) %>
+  <%= link_to "削除する", public_shipping_address_path(address.id), method: :delete %>
 <% end %>

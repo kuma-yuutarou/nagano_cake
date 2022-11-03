@@ -30,14 +30,14 @@
           <% end %>
         </td>
 
-        <td><%= cart_item.amount * cart_item.item.price %></td>
+        <td><%= cart_item.amount * (cart_item.item.price * 1.1).floor %></td>
 
         <td><%= link_to "削除する", public_cart_item_path(cart_item.id), method: :delete %></td>
 
-        <td><p>合計金額</p><%#=  %></td>
-
+        <td><% @total +=  (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
       </tr>
     <% end %>
+    <p>合計金額</p><%= @total %>
   </tbody>
 </table>
 

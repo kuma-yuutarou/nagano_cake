@@ -29,7 +29,7 @@
         <td><% @total +=  (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
       </tr>
     <% end %>
-    <p>送料</p>800
+    <p>送料</p>
     <p>商品合計</p><%= @total %>
     <p>請求金額</p><%= @total + 800 %>
   </tbody>

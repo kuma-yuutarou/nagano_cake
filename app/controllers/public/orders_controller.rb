@@ -29,11 +29,21 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.save
+    @cart_items = current_customer.cart_items.all
+    @cart_items.each do |cart_item|
+    	@order_detail = OrderDetail.new
+    	@order_detail.item_id = cart_item.item_id
+    	@order_detail.order_id = @order.id
+    	@order_detail.price = cart_item.amount * (cart_item.item.price * 1.1).floor
+    	@order_detail.amount = cart_item.amount
+    	@order_detail.making_status = 0
+    	@order_detail.save!
+    end
     redirect_to public_orders_complete_path
   end
 
   def index
-
+    @orders = current_customer.orders
   end
 
   def show

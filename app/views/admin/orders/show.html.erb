@@ -1,7 +1,10 @@
 <h2>注文履歴詳細</h2>
 
-<h4>購入者</h4>
-<h4>注文日</h4>
-<h4>配送先</h4>
-<h4>支払方法</h4>
-<h4>注文ステータス</h4>
+<h4>購入者</h4><%= link_to @orders.name, admin_customer_path(@customer.id) %>
+<h4>注文日</h4><%= @orders.created_at %>
+<h4>配送先</h4><%= @orders.postal_code %>
+<h4>支払方法</h4><%= @orders.payment_method %>
+<%= form_with model: @order, url: admin_order_path do |f| %>
+  <h4>注文ステータス</h4><%#= f.collection_select(:address_id, current_customer.addresses, :id, :full_address) %>
+  <%= f.submit '更新' %>
+<% end %>

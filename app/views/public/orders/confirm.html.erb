@@ -29,7 +29,7 @@
         <td><% @total +=  (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
       </tr>
     <% end %>
-    <p>送料</p>
+    <p>送料 800</p>
     <p>商品合計</p><%= @total %>
     <p>請求金額</p><%= @total + 800 %>
   </tbody>
@@ -38,7 +38,7 @@
 <h4>支払方法</h4>
   <%= @order.payment_method_i18n %>
 <h4>お届け先</h4>
-  <%= @order.address %>
+  <%= @order.full_address %>
 
   <%= form_with model: @order, url: public_orders_path do |f| %>
     <%= f.hidden_field :customer_id , value: current_customer.id %>

@@ -23,7 +23,7 @@
           <% end %>
         </td>
       <td><%= order.total_payment %></td>
-      <td><%= order.order_status %></td>
+      <td><%= Order.order_statuses_i18n[order.order_status] %></td>
       <td><%= link_to "表示する", public_order_path(order.id) %></td>
     </tr>
     <% end %>

@@ -13,15 +13,11 @@
   <tbody>
     <% @orders.each do |order| %>
     <tr>
-      <td><% order.created_at %></td>
-      <td><% order.name %></td>
-      <td><% order.amount %></td>
+      <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
+      <td><%= order.name %></td>
+      <td><%= order.amount_all %></td>
       <td>
-        <% if order.order_status %>
-
-        <% else %>
-
-        <% end %>
+        <%= Order.order_statuses_i18n[order.order_status] %>
       </td>
     </tr>
     <% end %>

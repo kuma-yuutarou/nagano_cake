@@ -5,7 +5,7 @@
     <%= image_tag item.image, size: '220x140' %>
   <% end %>
   <%= link_to item.name, public_item_path(item.id) %>
-  <%= item.price %>
+  <%= (item.price * 1.1).floor %>
 
 <% end %>
 <%= paginate @items %>

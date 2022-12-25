@@ -1,7 +1,7 @@
 <%= image_tag @item.image, size: '320x240' %>
 <h2><%= @item.name %></h2>
 <p><%= @item.introduction %></p>
-<h2>￥<%= @item.price %>（税込）</h2>
+<h2>￥<%= (@item.price * 1.1).floor %>（税込）</h2>
 
 <%= form_with model: @cart_item, url: public_cart_items_path do |f| %>
   <%= f.select :amount, [['1',1],['2',2],['3',3]] %>

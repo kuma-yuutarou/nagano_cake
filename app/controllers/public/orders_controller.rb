@@ -40,6 +40,7 @@ class Public::OrdersController < ApplicationController
     	@order_detail.amount = cart_item.amount
     	@order_detail.making_status = 0
     	@order_detail.save!
+    	cart_item.destroy
     end
     redirect_to public_orders_complete_path
   end

@@ -18,7 +18,7 @@
           <%= cart_item.item.name %>
         </td>
 
-        <td><%= cart_item.item.price %></td>
+        <td><%= (cart_item.item.price * 1.1).floor %></td>
 
         <td>
           <%= cart_item.amount %>
@@ -29,9 +29,22 @@
         <td><% @total +=  (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
       </tr>
     <% end %>
-    <p>送料 800</p>
-    <p>商品合計</p><%= @total %>
-    <p>請求金額</p><%= @total + 800 %>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <th>送料</th>
+    <th>商品合計</th>
+    <th>請求金額</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>800</td>
+      <td><%= @total %></td>
+      <td><%= @total + 800 %></td>
+    </tr>
+
   </tbody>
 </table>
 
